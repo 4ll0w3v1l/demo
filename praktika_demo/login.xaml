@@ -9,10 +9,9 @@
       Title="login">
 
     <Grid>
-        <TextBox HorizontalAlignment="Center" Margin="0,255,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="120" x:Name="loginText"/>
-        <Button Content="Вход" HorizontalAlignment="Left" Margin="420,352,0,0" VerticalAlignment="Top" Click="loginAction"/>
+        <!--<TextBox HorizontalAlignment="Center" Margin="0,255,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="120" x:Name="loginText"/>
         <PasswordBox HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" Width="120" x:Name="passText"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,139,0,0" TextWrapping="Wrap" Text="Вход в систему" VerticalAlignment="Top" Width="120" TextAlignment="Center"/>
-
+        <Button Content="Вход" HorizontalAlignment="Left" Margin="420,352,0,0" VerticalAlignment="Top" Click="loginAction"/>-->
     </Grid>
 </Page>

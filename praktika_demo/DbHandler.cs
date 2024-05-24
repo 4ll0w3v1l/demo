@@ -13,8 +13,6 @@ namespace praktika_demo
 {
     internal class DbHandler
     {
-        private string server;
-        private string database;
         private string connString;
         public SqlConnection conn;
         public SqlDataAdapter a;
@@ -24,45 +22,44 @@ namespace praktika_demo
         private int userAccess;
         public DbHandler(int uId, int userAccess) 
         {
-            this.userAccess = userAccess;
-            this.UserId = uId;
-            this.server = "DESKTOP-GJ3MKIR\\SQLEXPRESS";
-            this.database = "praktika";
-            this.connString = $"Server={server};Database={database};Integrated Security=True;";
-            this.conn = new SqlConnection(this.connString);
+            userAccess = userAccess;
+            UserId = uId;
+            connString = $"Data Source=!!!!!!!!!!!!;Initial Catalog=!!!!!!!!!!;Integrated Security=True;";
+            conn = new SqlConnection(connString);
 
-            if (this.conn.State == ConnectionState.Closed)
+            if (conn.State == ConnectionState.Closed)
             {
-                this.conn.Open();
+                conn.Open();
             }
         }
 
         public List<object> login(string l, string p)
         {
+            //here
             string comm = $"SELECT id, access FROM Users WHERE login = '{l}' AND password = '{p}'";
-            SqlCommand req = new SqlCommand(comm, this.conn);
+            SqlCommand req = new SqlCommand(comm, conn);
             SqlDataReader reader = req.ExecuteReader();
 
             List<object> userData = new List<object>();
             if (reader.Read())
-            {
-                
-                this.UserId = reader.GetInt32(0);
-                this.userAccess = reader.GetInt32(1);
+            {  
+                UserId = reader.GetInt32(0);
+                userAccess = reader.GetInt32(1);
 
-                userData.Add(this.UserId);
-                userData.Add(this.userAccess);
+                userData.Add(UserId);
+                userData.Add(userAccess);
 
                 return userData;
             }
             else { return userData; }
         }
 
-        public DataTable GetDataTable()
+        public DataTable GetDataTable(int accessLevel)
         {
-            this.dt = new DataTable();
+            dt = new DataTable();
             string comm = "";
-            if (false)
+            if (accessLevel>0)
+            //here
             {
                 comm = $"SELECT * FROM products WHERE [Исполнитель] = {UserId}";
             }
@@ -71,20 +68,20 @@ namespace praktika_demo
                 comm = $"SELECT * FROM products";
             }
 
-            SqlCommand req = new SqlCommand(comm, this.conn);
-            this.a = new SqlDataAdapter(req);
-            this.commandBuilder = new SqlCommandBuilder(a);
-            this.a.Fill(this.dt);
-            return this.dt;
+            SqlCommand req = new SqlCommand(comm, conn);
+            a = new SqlDataAdapter(req);
+            commandBuilder = new SqlCommandBuilder(a);
+            a.Fill(dt);
+            return dt;
         }
 
         public void Update()
         {
             try
             {
-                if (this.userAccess < 1)
+                if (userAccess < 1)
                 { 
-                    this.a.Update(this.dt);
+                    a.Update(dt);
                 }
                 else
                 {

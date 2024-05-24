@@ -30,7 +30,7 @@ namespace praktika_demo
             List<object> uId = dbHandler.login(loginText.Text, passText.Password);
             if (uId.Count > 0)
             {
-                this.NavigationService.Navigate(new MainPage((int)uId[0], (int)uId[1]));
+                NavigationService.Navigate(new MainPage((int)uId[0], (int)uId[1]));
             }
             else { MessageBox.Show("Некорректные данные"); }
 

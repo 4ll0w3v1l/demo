@@ -22,24 +22,24 @@ namespace praktika_demo
     {
         private DbHandler handler;
         private int uId;
-        private int userAccess;
+        private int accessLevel;
         public MainPage(int user, int userAccess)
         {
             InitializeComponent();
-            this.uId = user;
-            this.userAccess = userAccess;
-            this.handler = new DbHandler(this.uId, this.userAccess);
-            dt.ItemsSource = this.handler.GetDataTable().DefaultView;
+            uId = user;
+            accessLevel = userAccess;
+            handler = new DbHandler(uId, accessLevel);
+            dt.ItemsSource = handler.GetDataTable(accessLevel).DefaultView;
         }
         
         public void refresh(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Refresh();
-            dt.ItemsSource = this.handler.GetDataTable().DefaultView;
+            NavigationService.Refresh();
+            dt.ItemsSource = handler.GetDataTable(accessLevel).DefaultView;
         }
         public void saveData(object sender, RoutedEventArgs e) 
         {
-            this.handler.Update();
+            handler.Update();
         }
     }
 }

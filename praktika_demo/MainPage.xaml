@@ -9,9 +9,9 @@
       Title="MainPage">
 
     <Grid>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="dt" Height="357" VerticalAlignment="Top"/>
+        <!--<DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" x:Name="dt" Height="357" VerticalAlignment="Top"/>
         <Button Content="Сохранить" HorizontalAlignment="Left" Margin="696,362,0,0" VerticalAlignment="Top" Height="35" Width="94" Click="saveData"/>
-        <Button Content="Обновить" HorizontalAlignment="Right" Margin="0,362,679,0" VerticalAlignment="Top" Height="35" Width="111" Click="refresh"/>
+        <Button Content="Обновить" HorizontalAlignment="Right" Margin="0,362,679,0" VerticalAlignment="Top" Height="35" Width="111" Click="refresh"/>-->
 
     </Grid>
 </Page>
